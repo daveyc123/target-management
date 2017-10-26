@@ -13,6 +13,10 @@ import { FrontendApplicationContribution, WidgetFactory } from '@theia/core/lib/
 import { TargetManagementWidget } from './target-management-widget';
 import { ContainerModule } from "inversify";
 
+import { LocalTargetManager, TargetManager} from '../common/target-manager';
+import '../../src/browser/style/index.css';
+import 'font-awesome/css/font-awesome.min.css'
+
 export default new ContainerModule(bind => {
     // add your contribution bindings here
 
@@ -27,5 +31,8 @@ export default new ContainerModule(bind => {
         }
     })).inSingletonScope();
 
+    // these should probably go somewhere else, but this getting me there for now
 
+    bind(LocalTargetManager).toSelf().inSingletonScope();
+    bind(TargetManager).to(LocalTargetManager).inSingletonScope();
 });
