@@ -1,0 +1,7 @@
+node_modules
+lib
+*.log
+*-app/*
+!*-app/package.json
+.browser_modules
+yarn.lock
