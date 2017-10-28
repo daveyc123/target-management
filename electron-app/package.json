@@ -20,7 +20,7 @@
     "@theia/cli": "next"
   },
   "scripts": {
-    "prepare": "theia build",    
+    "prepare": "theia build",
     "start": "theia start",
     "watch": "theia build --watch"
   },

@@ -6,48 +6,8 @@
  */
 import { injectable, inject } from "inversify";
 import { FrontendApplication, FrontendApplicationContribution } from "@theia/core/lib/browser";
-import { CommandContribution, CommandRegistry, MenuContribution, MenuModelRegistry, MAIN_MENU_BAR, MessageService } from "@theia/core/lib/common";
 import { WidgetManager } from '@theia/core/lib/browser/widget-manager';
-import { CommonMenus } from "@theia/core/lib/browser";
 
-export const TargetManagementCommand = {
-    id: 'TargetManagement.command',
-    label: "Shows a message"
-};
-
-@injectable()
-export class TargetManagementCommandContribution implements CommandContribution {
-
-    constructor(
-        @inject(MessageService) private readonly messageService: MessageService,
-    ) { }
-
-    registerCommands(registry: CommandRegistry): void {
-        registry.registerCommand(TargetManagementCommand);
-        registry.registerHandler(TargetManagementCommand.id, {
-            execute: (): any => {
-                this.messageService.info('Hello World2!');
-                return null;
-            },
-            isEnabled: () => true
-        });
-    }
-}
-
-@injectable()
-export class TargetManagementMenuContribution implements MenuContribution {
-
-    registerMenus(menus: MenuModelRegistry): void {
-        menus.registerMenuAction([
-            MAIN_MENU_BAR,
-            CommonMenus.EDIT_MENU,
-            CommonMenus.EDIT_MENU_FIND_REPLACE_GROUP
-        ], {
-                commandId: TargetManagementCommand.id,
-                label: 'Say Hello2'
-            });
-    }
-}
 
 @injectable()
 export class TargetManagementFrontEndContribution implements FrontendApplicationContribution {
