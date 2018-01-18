@@ -8,15 +8,15 @@ import { injectable } from "inversify";
 import { MenuContribution, MenuModelRegistry } from "@theia/core";
 import { TARGET_MANAGEMENT_COMMANDS } from "./target-management-command";
 
-export const TARGET_MANAGEMENT_CONTEXT_MENU: string = 'target-management-context-menu';
+export const TARGET_MANAGEMENT_CONTEXT_MENU: string[] = ['target-management-context-menu'];
 
 @injectable()
 export class TargetManagementContextMenu implements MenuContribution {
 
     registerMenus(menus: MenuModelRegistry): void {
-        menus.registerSubmenu([], TARGET_MANAGEMENT_CONTEXT_MENU, '');
+        menus.registerSubmenu(TARGET_MANAGEMENT_CONTEXT_MENU, '');
 
-        menus.registerMenuAction([TARGET_MANAGEMENT_CONTEXT_MENU], {
+        menus.registerMenuAction(TARGET_MANAGEMENT_CONTEXT_MENU, {
             commandId: TARGET_MANAGEMENT_COMMANDS.CONNECT.id
         });
     }

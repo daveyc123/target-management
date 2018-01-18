@@ -34,8 +34,8 @@ export class TargetManagementOpenHandler implements OpenHandler {
     async open(uri: URI): Promise<TargetDetailWidget> {
         const target: Target = await this.targetManager.getTarget(uri);
         const widget = await this.widgetManager.getOrCreateWidget<TargetDetailWidget>("target", target);
-        this.app.shell.addToMainArea(widget);
-        this.app.shell.activateMain(widget.id);
+        this.app.shell.addWidget(widget, { area: 'main' });
+        this.app.shell.activateWidget(widget.id);
         return widget;
     }
 

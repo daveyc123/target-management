@@ -18,7 +18,8 @@ export class TargetManagementFrontEndContribution implements FrontendApplication
 
     async onStart(app: FrontendApplication): Promise<void> {
         const targetManagementWidget = await this.widgetManager.getOrCreateWidget('target-management');
-        app.shell.addToLeftArea(targetManagementWidget, {
+        app.shell.addWidget(targetManagementWidget, {
+            area: 'left',
             rank: 300
         });
     }
